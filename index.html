@@ -20,37 +20,68 @@
     <header>
         <div class="container-fluid">
 
-            <nav class="navbar fixed-top navbar-expand-sm navbar-dark ">
-                <a href="index.html" class="navbar-brand mb-0 h1 cool-link" style="color:wheat;">LITTLE READERS CLUB</a>
-
+            <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light ">
+                <a href="index.html" class="navbar-brand mb-0 h1 cool-link" style="color: green;">LITTLE READERS CLUB</a>
                 <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarMenu">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a href="index.html" class="nav-link ml-2 cool-link" style="color: wheat;">Home</a>
-
+                            <a href="index.html" class="nav-link ml-2 cool-link" style="color: green;">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="about.html" class="nav-link ml-2 cool-link" style="color: wheat;">About</a>
+                            <a href="about.html" class="nav-link ml-2 cool-link" style="color: green;">About</a>
                         </li>
                         <li class="nav-item">
-                            <a href="mission.html" class="nav-link ml-2 cool-link" style="color: wheat;">Mission</a>
+                            <a href="mission.html" class="nav-link ml-2 cool-link" style="color: green;">Mission</a>
                         </li>
                         <li class="nav-item">
-                            <a href="contactus.html" class="nav-link ml-2 cool-link" style="color: wheat;">Contact
+                            <a href="contactus.html" class="nav-link ml-2 cool-link" style="color: green;">Contact
                                 Us</a>
                         </li>
-                        
                         <li class="nav-item">
-                            <button type="button" class="btn btn-light ml-2 mt-1"><a href="https://rzp.io/l/n1pKu6EH">Donate</a> </button>
+                            <a href="./google-pay/server/index.html" class="nav-link ml-2 cool-link" style="color: green;">Donate Please</a>
+                            <button type="button" class="btn btn-light ml-2 mt-1"><a
+                                    href="./google-pay/server/index.html">Donate</a> </button>
                         </li>
                     </ul>
                 </div>
             </nav>
         </div>
     </header>
+
+
+    <div id="container"></div>
+
+
+<script>
+
+    function onGooglePayLoaded() {
+        const paymentsClient = getGooglePaymentsClient();
+        paymentsClient.isReadyToPay(getGoogleIsReadyToPayRequest())
+            .then(function(response) {
+            if (response.result) {
+                addGooglePayButton();
+                // @todo prefetch payment data to improve performance after confirming site functionality
+                // prefetchGooglePaymentData();
+            }
+            })
+            .catch(function(err) {
+            // show error in developer console for debugging
+            console.error(err);
+            });
+    }
+    
+</script>
+    
+<script src="./google-pay/server/googlePay.js"></script>
+<script src="./google-pay/server.js"></script>
+<script async
+    src="https://pay.google.com/gp/p/js/pay.js"
+    onload="onGooglePayLoaded()"></script>
+    
+</script>
     <section>
         <div id="carousel_1" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
